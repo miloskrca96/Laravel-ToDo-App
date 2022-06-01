@@ -1,0 +1,64 @@
+html, 
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+// Content max-width
+$max-width: 540px;
+
+// Breakpoints
+$phone-width: 575px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+
+footer {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 0;
+
+    .footer {
+        max-width: $max-width;
+        column-gap: 7px;
+        display: flex;
+
+        .footer__text {
+            color: $purple-navy-color;
+            font-family: $primary-font-family;
+            font-size: 18px;
+            line-height: 18px;
+        }
+    
+        .footer__link {
+            display: flex;
+            color: $blue-color;
+            font-family: $primary-font-family;
+            font-size: 18px;
+            line-height: 18px;
+        }
+
+        @media (max-width: 575px) {
+            padding: 0 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .footer__text {
+                font-size: 14px;
+            }
+
+            .footer__link {
+                font-size: 14px;
+            }
+        }
+    }
+}
