@@ -13,6 +13,8 @@ let currentFilterValue = document.querySelectorAll('.current__filter-value')[0];
 let updateFormMethod = document.querySelectorAll('.update__method')[0];
 let updateFormId = document.querySelectorAll('.update__id')[0];
 
+const homeURL = window.ToDoApp.homeURL + '/';
+
 // Adding behavior for circle, on click, task is marked as done, CSS
 for (let i = 0; i < listItems.length; i++) {
     // Helper function
@@ -50,7 +52,7 @@ function setTaskDoneFormUpdate(elem) {
         event.preventDefault();
 
         // URL
-        const url = "{{ url(" / ") }}";
+        const url = homeURL;
         // Parent element, which contain child input element with ID value
         const parentElement = elem.parentElement;
         // Child element
@@ -125,7 +127,7 @@ function filterTasks(elem) {
             }
         
             // URL
-            const url = "{{ url(" / ") }}";
+            const url = homeURL;
 
             // AJAX Call
             $.ajax({
@@ -158,7 +160,7 @@ clearAllDone.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // URL
-    const url = "{{ url(" / ") }}";
+    const url = homeURL;
 
     // AJAX call
     $.ajax({
@@ -192,7 +194,7 @@ taskAddForm.addEventListener("submit", (event) => {
     event.preventDefault();
     
     // URL
-    const url = "{{ url(" / ") }}";
+    const url = homeURL;
     // Name of task
     const name = document.querySelectorAll(".task-add-form__input")[0].value;
 
@@ -262,7 +264,7 @@ function addCloseFunction(elem) {
         event.preventDefault();
 
         // URL
-        const url = "{{ url(" / ") }}";
+        const url = homeURL;
         // Parent element, which contain child input element with ID value
         const parentElement = elem.parentElement;
         // Child element

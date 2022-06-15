@@ -10,8 +10,12 @@ class TaskController extends Controller
 {
     public function index() {
         $tasks = Task::all();
-        $notCompleted = Task::where('done', '=', '0')->get();
-
+        // Without scope
+        // $notCompleted = Task::where('done', '=', '0')->get();
+        
+        // With scope
+        $notCompleted = Task::active()->get();
+        
         $data = [
             'tasks'           => $tasks,
             'num'             => count($tasks),
@@ -30,7 +34,11 @@ class TaskController extends Controller
 
 
             if($filterVal == 0 || $filterVal == 1) {
-                $filteredTasks = Task::where('done', '=', $filterVal)->get(['id']);
+                // Without scope
+                // $filteredTasks = Task::where('done', '=', $filterVal)->get(['id']);
+
+                // With scope
+                $filteredTasks = Task::parameter($filterVal)->get(['id']);
             }
 
             return response()->json([
@@ -54,7 +62,11 @@ class TaskController extends Controller
     public function destroy(Request $request){
         
         if($request->has('clearDone')) {
-            $tasks = Task::where('done','=', 1)->delete();
+            // Without scope
+            // $tasks = Task::where('done','=', 1)->delete();
+
+            // With scope
+            $tasks = Task::completed()->delete();
             
             return response()->json([
                 'message' => 'All done tasks deleted successfully!'
@@ -81,7 +93,6 @@ class TaskController extends Controller
                 $task->done = true; 
             }
         }
-        
         
         $task->save();
 
